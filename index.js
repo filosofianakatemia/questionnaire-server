@@ -1,19 +1,16 @@
-// Load the http module to create an http server.
-var http = require('http');
-var core = require('../questionnaire-core/core');
-
-var responseWithJSON = function(data){
-  response.end(JSON.stringify(data));
+/**
+ * Load configuration file given as command line parameter
+ */
+let config;
+if (process.argv.length > 2) {
+  console.log('loading configuration file: ' + process.argv[2]);
+  config = require(process.argv[2]);
+  if (process.argv.length > 3){
+    config.backend = process.argv[3];
+  }
+}else{
+  console.error('no configuration file provided');
+  process.exit();
 };
 
-// Configure our HTTP server to respond with Hello World to all requests.
-var server = http.createServer(function (request, response) {
-  response.writeHead(200, {"Content-Type": "application/json"});
-  var responseWithJSON = function(data){
-  	  response.end(JSON.stringify(data));
-  };
-  core.findRestaurants(responseWithJSON);
-});
-
-// Listen on port 8000, IP defaults to 127.0.0.1
-server.listen(8080);
+require('./lib/server.js')(config);
