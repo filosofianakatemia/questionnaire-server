@@ -25,8 +25,15 @@ module.exports = (config, app) => {
     let responseFromGetQuestionnaires = await core.getQuestionnaires();
     ctx.body = responseFromGetQuestionnaires;
   }
+  
+  async function putQuestionnaire(ctx){
+    console.log('PUT /questionnaire');
+    let responseFromPutQuestionnaire = await core.putQuestionnaire();
+    ctx.body = responseFromPutQuestionnaire;
+  }
 
   // ROUTES
 
   app.use(route.get('/questionnaires', getQuestionnaires));
+  app.use(route.put('/questionnaire', putQuestionnaire));
 }
