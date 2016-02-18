@@ -6,8 +6,6 @@
 
 // external
 const Koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-const convert = require('koa-convert');
 const logger = require('koa-logger');
 
 module.exports = (config) => {
@@ -20,7 +18,7 @@ module.exports = (config) => {
   // debugging setup
 
   if (config.debug){
-    app.use(convert(logger()));
+    app.use(logger());
   }
 
   // add server API
