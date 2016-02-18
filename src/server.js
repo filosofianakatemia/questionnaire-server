@@ -6,6 +6,7 @@
 
 // external
 const Koa = require('koa');
+const bodyParser = require('koa-bodyparser');
 const convert = require('koa-convert');
 const logger = require('koa-logger');
 
