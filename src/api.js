@@ -29,11 +29,10 @@ module.exports = (config, app) => {
 
   async function putQuestionnaire(ctx){
     console.log('PUT /questionnaire');
+    
+    let payload = ctx.request.body;
 
-    console.log('DEBUG PRINT PAYLOAD REMOVE ME: ');
-    console.log(ctx.request.body);
-
-    let responseFromPutQuestionnaire = await core.putQuestionnaire();
+    let responseFromPutQuestionnaire = await core.putQuestionnaire(payload);
     ctx.body = responseFromPutQuestionnaire;
   }
 
