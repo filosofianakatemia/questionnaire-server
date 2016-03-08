@@ -27,8 +27,8 @@ module.exports = (config, app) => {
   }
 
   async function getQuestionnaire(ctx,uuid){
-    let responseFromDeleteQuestionnaire = await core.deleteQuestionnaire(uuid);
-    ctx.body = responseFromDeleteQuestionnaire;
+    let responseFromGetQuestionnaire = await core.getQuestionnaire(uuid);
+    ctx.body = responseFromGetQuestionnaire;
   }
 
   // ROUTES
