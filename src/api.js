@@ -20,8 +20,13 @@ module.exports = (config, app) => {
     let responseFromPutQuestionnaire = await core.putQuestionnaire(payload);
     ctx.body = responseFromPutQuestionnaire;
   }
-  
+
   async function deleteQuestionnaire(ctx,uuid){
+    let responseFromDeleteQuestionnaire = await core.deleteQuestionnaire(uuid);
+    ctx.body = responseFromDeleteQuestionnaire;
+  }
+
+  async function getQuestionnaire(ctx,uuid){
     let responseFromDeleteQuestionnaire = await core.deleteQuestionnaire(uuid);
     ctx.body = responseFromDeleteQuestionnaire;
   }
@@ -32,4 +37,5 @@ module.exports = (config, app) => {
   app.use(route.get('/questionnaires', getQuestionnaires));
   app.use(route.put('/questionnaire', putQuestionnaire));
   app.use(route.delete('/questionnaire/:uuid', deleteQuestionnaire));
+  app.use(route.get('/questionnaire/:uuid', getQuestionnaire));
 }
