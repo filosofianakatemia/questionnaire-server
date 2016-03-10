@@ -11,24 +11,34 @@ module.exports = (config, app) => {
   // API METHODS
 
   async function getQuestionnaires(ctx) {
-    let responseFromGetQuestionnaires = await core.getQuestionnaires();
-    ctx.body = responseFromGetQuestionnaires;
+    let responseFromCore = await core.getQuestionnaires();
+    ctx.body = responseFromCore;
   }
 
   async function putQuestionnaire(ctx){
     let payload = ctx.request.body;
-    let responseFromPutQuestionnaire = await core.putQuestionnaire(payload);
-    ctx.body = responseFromPutQuestionnaire;
+    let responseFromCore = await core.putQuestionnaire(payload);
+    ctx.body = responseFromCore;
   }
 
   async function deleteQuestionnaire(ctx,uuid){
-    let responseFromDeleteQuestionnaire = await core.deleteQuestionnaire(uuid);
-    ctx.body = responseFromDeleteQuestionnaire;
+    let responseFromCore = await core.deleteQuestionnaire(uuid);
+    ctx.body = responseFromCore;
   }
 
   async function getQuestionnaire(ctx,uuid){
-    let responseFromGetQuestionnaire = await core.getQuestionnaire(uuid);
-    ctx.body = responseFromGetQuestionnaire;
+    let responseFromCore = await core.getQuestionnaire(uuid);
+    ctx.body = responseFromCore;
+  }
+  
+  async function deployQuestionnaire(ctx,uuid){
+    let responseFromCore = await core.deployQuestionnaire(uuid);
+    ctx.body = responseFromCore;
+  }
+  
+  async function closeQuestionnaire(ctx,uuid){
+    let responseFromCore = await core.closeQuestionnaire(uuid);
+    ctx.body = responseFromCore;
   }
 
   // ROUTES
@@ -38,4 +48,6 @@ module.exports = (config, app) => {
   app.use(route.put('/questionnaire', putQuestionnaire));
   app.use(route.delete('/questionnaire/:uuid', deleteQuestionnaire));
   app.use(route.get('/questionnaire/:uuid', getQuestionnaire));
+  app.use(route.post('/questionnaire/:uuid/deploy', deployQuestionnaire));
+  app.use(route.post('/questionnaire/:uuid/close', closeQuestionnaire));
 }
