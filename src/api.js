@@ -40,6 +40,12 @@ module.exports = (config, app) => {
     let responseFromCore = await core.closeQuestionnaire(uuid);
     ctx.body = responseFromCore;
   }
+  
+  async function updateQuestionnaire(ctx,uuid){
+  	let payload = ctx.request.body;
+    let responseFromCore = await core.updateQuestionnaire(uuid,payload);
+    ctx.body = responseFromCore;
+  }
 
   // ROUTES
 
@@ -50,4 +56,5 @@ module.exports = (config, app) => {
   app.use(route.get('/questionnaire/:uuid', getQuestionnaire));
   app.use(route.post('/questionnaire/:uuid/deploy', deployQuestionnaire));
   app.use(route.post('/questionnaire/:uuid/close', closeQuestionnaire));
+  app.use(route.put('/questionnaire/:uuid', updateQuestionnaire));
 }
