@@ -2,5 +2,6 @@
 module.exports = {
   port: 3000,
   debug: true,
-  mongodbUrl: "mongodb://localhost:27017/questionnaires"
+  dbUrl: "mongodb://localhost:27017/questionnaires",
+  usedDatabase: "mongo"
 };

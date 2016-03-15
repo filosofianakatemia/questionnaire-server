@@ -6,7 +6,7 @@ const route = require('koa-route');
 module.exports = (config, app) => {
 
   // TODO: Remove relative path when questionnaire-core is published to npmjs.org
-  const core = require('../../questionnaire-core/src/interface.js')(config.mongodbUrl);
+  const core = require('../../questionnaire-core/src/interface.js')(config.dbUrl,config.usedDatabase);
 
   // API METHODS
 
